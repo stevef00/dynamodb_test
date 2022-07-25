@@ -1,0 +1,99 @@
+boto3: basic dynamodb examples
+https://boto3.amazonaws.com/v1/documentation/api/latest/guide/dynamodb.html
+
+boto3: Passing credentials as parameters
+https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#guide-credentials
+
+boto3: configuration (Config object, setting region, etc)
+https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+
+
+boto3: Session reference
+https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html
+
+
+7 Common DynamoDB Patterns for Modeling and Building an App with Alex De Brie
+https://www.youtube.com/watch?v=Q6-qWdsa8a4
+
+
+import boto3
+import boto3.session
+
+my_key_id = ''
+my_access_key = ''
+
+my_session = boto3.session.Session(...)
+my_session.resource('dynamodb',
+    aws_access_key_id = my_key_id,
+    aws_secret_access_key = my_access_key
+)
+
+
+IDENTIFY USE CASES
+------------------
+
+- add a user
+- add a bookmark
+- list all bookmarks belonging to a user
+- add a tag to a bookmark
+- list all bookmarks with a tag belonging to user
+- list all tags associated with a bookmark
+- delete a tag from a bookmark
+- delete a bookmark
+- delete a user
+
+                               +------------+
+                               |  bookmark  |-----> url
+                               +------------+       description
+                                  1      N          date_created
+                                  |      |          date_modified
+                                  |      |
+          +-------+               |      |                 +--------+
+          |  tag  |<-N------------+      +--------------1->|  user  |----> user_id
+          +-------+                                        +--------+      email
+              | 
+              +-> name
+
+SCHEMA
+-------
+
+PK         SK          ATTRIBUTES
+---------  ---------   ---------------
+user#0     bookmark#0  url, description, date_created, date_modified
+bookmark#0 tag#0       name
+user#0     user_id     email
+
+
+OBJECTS
+-------
+             PK             SK
+             -------------  -------------
+* bookmark   bkmk#xxxxxxx
+* user       user#xxxxxxx
+* tag        tag#xxxxxxxx
+
+
+GOALS
+-----
+* from cli add bookmarks
+* from cli list bookmarks
+
+* a bookmark has
+  - url
+  - description
+  - to_read flag
+  - category / tag(s)
+  - create_date
+
+
+DYNAMODB TERMS
+--------------
+- primary key
+- Partition Key (PK)
+- Sort Key (SK)
+- Global Secondary Index (GSI)
+
+- Universally unique Lexicographically sortable IDentifier (ULID)
+
+  Not a DynamoDB term, but useful for creating timebased sortable unique
+  identifiers which can be used in sort keys.

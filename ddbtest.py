@@ -3,6 +3,7 @@
 from configparser import ConfigParser, NoSectionError, NoOptionError
 import boto3
 import boto3.session
+from boto3.dynamodb.conditions import Key, Attr
 import sys
 
 parser = ConfigParser()
@@ -34,3 +35,9 @@ response = table.get_item(
         )
 item = response['Item']
 print(item)
+
+response = table.query(
+    KeyConditionExpression=Key('userid').eq('userid#0')
+)
+items = response['Items']
+print(items)

@@ -16,6 +16,10 @@ https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.h
 https://www.youtube.com/watch?v=Q6-qWdsa8a4
 
 
+cliff – Command Line Interface Formulation Framework
+https://docs.openstack.org/cliff/latest/index.html
+
+
 import boto3
 import boto3.session
 
@@ -85,6 +89,10 @@ GOALS
   - category / tag(s)
   - create_date
 
+USER INTERFACE
+--------------
+bmthing list [--tag TAG]
+bmthing add [--description DESCRIPTION] [--tags TAG[,...]] URL
 
 DYNAMODB TERMS
 --------------

@@ -97,8 +97,11 @@ GOALS
 
 USER INTERFACE
 --------------
-bmthing list [--tag TAG]
-bmthing add [--description DESCRIPTION] [--tags TAG[,...]] URL
+bkmk list [--tag TAG]
+bkmk info BKMKID
+bkmk add [--description DESCRIPTION] [--tags TAG[,...]] URL
+bkmk rm BKMKID
+bkmk update [--description DESCRIPTION] [--add-tags TAG[,...]] [--rm-tags TAG[,...]] [--url URL] BKMKID
 
 DYNAMODB TERMS
 --------------

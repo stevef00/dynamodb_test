@@ -19,6 +19,12 @@ https://www.youtube.com/watch?v=Q6-qWdsa8a4
 cliff – Command Line Interface Formulation Framework
 https://docs.openstack.org/cliff/latest/index.html
 
+setuptools – Development Mode
+https://setuptools.pypa.io/en/latest/userguide/development_mode.html
+
+setuptools – Entry Points
+https://setuptools.pypa.io/en/latest/userguide/entry_point.html
+
 
 import boto3
 import boto3.session

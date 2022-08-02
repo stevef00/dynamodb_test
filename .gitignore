@@ -1,1 +1,4 @@
 config.ini
+venv/
+bkmk.egg-info/
+bkmk/__pycache__/

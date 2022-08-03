@@ -52,7 +52,7 @@ setup(
             'bkmk = bkmk.main:main'
         ],
         'bkmk': [
-            'simple = bkmk.simple:Simple'
+            'list = bkmk.list:List',
         ]
     },
 

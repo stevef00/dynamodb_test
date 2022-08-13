@@ -41,7 +41,7 @@ setup(
     scripts = [],
 
     provides = [],
-    install_requires = [ 'cliff', 'boto3' ],
+    install_requires = [ 'cliff', 'boto3', 'ulid-py' ],
 
     namespace_packages = [],
     packages = find_packages(),
@@ -52,7 +52,9 @@ setup(
             'bkmk = bkmk.main:main'
         ],
         'bkmk': [
+            'add = bkmk.add:Add',
             'list = bkmk.list:List',
+            'rm = bkmk.rm:Rm',
         ]
     },
 

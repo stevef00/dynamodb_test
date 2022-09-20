@@ -7,7 +7,7 @@ from configparser import ConfigParser, NoSectionError, NoOptionError
 import boto3
 import boto3.session
 from boto3.dynamodb.conditions import Key, Attr
-import sys
+import os, sys
 
 #response = table.get_item(
 #        Key={
@@ -80,7 +80,10 @@ class BkmkApp(App):
             )
 
     def initialize_app(self, argv):
-        self.ddb_con = DdbConn(config_file='config.ini')
+        user_config_dir = os.path.expanduser("~") + "/.config"
+        user_config = user_config_dir + "/bkmk.ini"
+
+        self.ddb_con = DdbConn(config_file=user_config)
 
     def prepare_to_run_command(self, cmd):
         self.LOG.debug('prepare_to_run_command %s', cmd.__class__.__name__)
